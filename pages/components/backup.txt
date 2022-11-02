@@ -1,0 +1,33 @@
+{
+        //We start the Upload with this code line
+        if (imageToPost) {
+          const uploadTask = storage
+            .ref(`posts/${doc.id}`)
+            .putString(imageToPost, "data_url");
+
+          removeImage();
+
+          uploadTask.on(
+            "state_change",
+            null,
+            (error) => console.error(error),
+            () => {
+              //When the upload Completes
+
+              storage
+                .ref("posts")
+                .child(doc.id)
+                .getDownloadUrl()
+                .then((url) => {
+                  db.collection("posts").doc(doc.id).set(
+                    {
+                      postImage: url,
+                    }, //so that it doesnt replace the add({}) objects properties, always remember to add merge whenever set() is used,
+                    { merge: true }
+                  );
+                });
+              //you can use this instead storage.ref(`posts/${doc.id}`).getDownloadUrl();
+            }
+          );
+        }
+      }
