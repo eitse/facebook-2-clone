@@ -25,6 +25,6 @@ const db = app.firestore();
 // Get a reference to the storage service, which is used to create references in your storage bucket
 const storage = getStorage(app);
 
-const storageRef = ref(storage);
+// const storageRef = ref(storage);
 
-export { db, storage, storageRef };
+export { db, storage};
