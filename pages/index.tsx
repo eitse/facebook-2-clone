@@ -1,4 +1,3 @@
-import type {  NextPage } from 'next'
 import Head from 'next/head'
 import { getSession } from 'next-auth/react'
 import Login from './components/Login'
@@ -16,7 +15,7 @@ interface Props{
   posts: any
 }
 
-const Home: NextPage = ({session, posts}:Props) => {
+const Home = ({session, posts}:Props) => {
   if (!session) return <Login/>
   else return (
     <div>
@@ -27,7 +26,7 @@ const Home: NextPage = ({session, posts}:Props) => {
      <Header/>
      <main className='flex bg-[#f7f8fa]  '>
       <Sidebar/>
-      <Feed posts={posts}/>
+      <Feed/>
       <Widgets/>
      </main>
 
