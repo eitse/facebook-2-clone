@@ -65,7 +65,7 @@ function Header() {
       {/* Header Right */}
       <div className="flex first-letter:flex md:w-fit justify-end items-center ">
         <Image
-          src={session?.user?.image}
+          src={`${session?.user?.image}`}
           className="rounded-full cursor-pointer"
           onClick={() => signOut()}
           width={40}
